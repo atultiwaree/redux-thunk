@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import incrementAsync from "./redux/action";
+export const App = () => {
+    const dispatch = useDispatch();
+    const selector = useSelector((state) => state)
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+     return (
+         <div style={{margin : "0 auto", width : "50%"}}>
+             <h1>Number : {selector.num} </h1>
+             <div>
+                 <button onClick={() => dispatch(incrementAsync())}>Inc</button>
+             </div>
+         </div>
+     )
 }
-
-export default App;
